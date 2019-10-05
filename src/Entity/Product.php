@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\DTO\CreateProductDTO;
 use App\DTO\UpdateProductDTO;
+use App\Issn;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -63,7 +64,7 @@ class Product
 
     public function __construct(CreateProductDTO $dto, Customer $customer)
     {
-        $this->issn = $dto->issn;
+        $this->issn = Issn::generate();
         $this->name = $dto->name;
         $this->status = 'new'; //TODO: remove hardcode
         $this->customer = $customer;
@@ -82,6 +83,11 @@ class Product
     public function getStatus(): string
     {
         return $this->status;
+    }
+
+    public function getCustomer(): Customer
+    {
+        return $this->customer;
     }
 
     public function update(UpdateProductDTO $dto): void

@@ -6,7 +6,6 @@ use App\DTO\CreateProductDTO;
 use App\DTO\UpdateProductDTO;
 use App\Entity\Customer;
 use App\Entity\Product;
-use App\Issn;
 use App\Service\ValidationService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -33,7 +32,6 @@ class ProductApiController extends AbstractController
         $data = json_decode($request->getContent());
 
         $productDTO = new CreateProductDTO();
-        $productDTO->issn = Issn::generate();
         $productDTO->name = $data->name;
 
         if ($errors = $validator->validate($productDTO)) {

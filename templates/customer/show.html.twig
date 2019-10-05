@@ -24,6 +24,10 @@
                 <td>{{ customer.dateOfBirth ? customer.dateOfBirth|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
+                <th>Products</th>
+                <td><a href="{{ path('product_index', {'uuid': customer.uuid}) }}">products</a></td>
+            </tr>
+            <tr>
                 <th>Status</th>
                 <td>{{ customer.status }}</td>
             </tr>

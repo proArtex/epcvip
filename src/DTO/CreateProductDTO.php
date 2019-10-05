@@ -8,12 +8,6 @@ class CreateProductDTO
 {
     /**
      * @var string
-     * @Assert\NotBlank()
-     */
-    public $issn;
-
-    /**
-     * @var string
      * @Assert\Type("string")
      * @Assert\NotBlank()
      * @Assert\Length(min="2", max="255")
