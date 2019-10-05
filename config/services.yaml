@@ -36,3 +36,8 @@ services:
             $firewallMap: '@security.firewall.map'
         tags:
             - { name: 'monolog.logger', channel: 'api' }
+
+    App\Service\EmailNotificationService:
+        arguments:
+            $from: '%env(EMAIL_SENDER)%'
+            $to: '%env(EMAIL_RECIPIENT)%'
