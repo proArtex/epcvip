@@ -30,3 +30,9 @@ services:
         arguments:
             $firewallMap: '@security.firewall.map'
             $isDebugEnabled: '%kernel.debug%'
+
+    App\EventSubscriber\ApiRequestResponseLogEventSubscriber:
+        arguments:
+            $firewallMap: '@security.firewall.map'
+        tags:
+            - { name: 'monolog.logger', channel: 'api' }

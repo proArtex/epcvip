@@ -21,3 +21,17 @@ monolog:
             handler: deprecation
             max_level: info
             channels: ["php"]
+        api:
+            type: fingers_crossed
+            action_level: info
+            handler: grouped
+            channels: ["api"]
+            grouped:
+                type: group
+                members: [api.file, api.db]
+            api.file:
+                type: stream
+                path: "%kernel.logs_dir%/%kernel.environment%.api.log"
+            api.db:
+                type: service
+                id: App\Monolog\DoctrineHandler
