@@ -4,7 +4,7 @@ namespace App;
 
 class Issn
 {
-    public function generate(): string
+    public static function generate(): string
     {
         //TODO: put real ISSN algorithm
         return uniqid();
