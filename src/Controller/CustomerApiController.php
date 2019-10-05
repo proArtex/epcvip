@@ -7,7 +7,6 @@ use App\DTO\UpdateCustomerDTO;
 use App\Entity\Customer;
 use App\Service\ValidationService;
 use DateTimeImmutable;
-use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +24,6 @@ class CustomerApiController extends AbstractController
 
         //TODO: handle null & datetime; param converter
         $customerDTO = new CreateCustomerDTO();
-        $customerDTO->uuid = (string) Uuid::uuid4();
         $customerDTO->firstName = $data->firstName;
         $customerDTO->lastName = $data->lastName;
         $customerDTO->dateOfBirth = new DateTimeImmutable($data->dateOfBirth);

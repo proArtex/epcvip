@@ -9,13 +9,6 @@ class CreateCustomerDTO
 {
     /**
      * @var string
-     * @Assert\Uuid()
-     * @Assert\NotBlank()
-     */
-    public $uuid;
-
-    /**
-     * @var string
      * @Assert\Type("string")
      * @Assert\NotBlank()
      * @Assert\Length(min="2", max="255")

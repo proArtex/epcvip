@@ -8,6 +8,7 @@ use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @ORM\Entity()
@@ -75,7 +76,7 @@ class Customer
 
     public function __construct(CreateCustomerDTO $dto)
     {
-        $this->uuid = $dto->uuid; //TODO: binary(16)
+        $this->uuid = (string) Uuid::uuid4(); //TODO: binary(16)
         $this->firstName = $dto->firstName;
         $this->lastName = $dto->lastName;
         $this->dateOfBirth = $dto->dateOfBirth;
