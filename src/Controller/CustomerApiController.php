@@ -22,10 +22,10 @@ class CustomerApiController extends AbstractController
     {
         $data = json_decode($request->getContent());
 
-        //TODO: handle null & datetime; param converter
+        //TODO: handle datetime; param converter
         $customerDTO = new CreateCustomerDTO();
-        $customerDTO->firstName = $data->firstName;
-        $customerDTO->lastName = $data->lastName;
+        $customerDTO->firstName = $data->firstName ?? null;
+        $customerDTO->lastName = $data->lastName ?? null;
         $customerDTO->dateOfBirth = new DateTimeImmutable($data->dateOfBirth);
 
         if ($errors = $validator->validate($customerDTO)) {
@@ -75,10 +75,10 @@ class CustomerApiController extends AbstractController
         $data = json_decode($request->getContent());
 
         $customerDTO = new UpdateCustomerDTO();
-        $customerDTO->firstName = $data->firstName;
-        $customerDTO->lastName = $data->lastName;
+        $customerDTO->firstName = $data->firstName ?? null;
+        $customerDTO->lastName = $data->lastName ?? null;
         $customerDTO->dateOfBirth = new DateTimeImmutable($data->dateOfBirth);
-        $customerDTO->status = $data->status;
+        $customerDTO->status = $data->status ?? null;
 
         if ($errors = $validator->validate($customerDTO)) {
             return new JsonResponse(['errors' => $errors], Response::HTTP_UNPROCESSABLE_ENTITY);

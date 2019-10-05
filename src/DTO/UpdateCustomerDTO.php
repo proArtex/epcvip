@@ -32,7 +32,10 @@ class UpdateCustomerDTO
     /**
      * @var string
      * @Assert\NotBlank()
-     * @Assert\Choice({"pending", "in review", "approved", "inactive"})
+     * @Assert\Choice(
+     *     callback={"App\Enum\Status", "allExternal"},
+     *     message="Value must be one of {{ choices }}"
+     * )
      */
     public $status;
 }

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\DTO\CreateProductDTO;
 use App\DTO\UpdateProductDTO;
+use App\Enum\Status;
 use App\Issn;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -66,7 +67,7 @@ class Product
     {
         $this->issn = Issn::generate();
         $this->name = $dto->name;
-        $this->status = 'new'; //TODO: remove hardcode
+        $this->status = Status::NEW;
         $this->customer = $customer;
     }
 

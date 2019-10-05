@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\DTO\CreateCustomerDTO;
 use App\DTO\UpdateCustomerDTO;
+use App\Enum\Status;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -80,7 +81,7 @@ class Customer
         $this->firstName = $dto->firstName;
         $this->lastName = $dto->lastName;
         $this->dateOfBirth = $dto->dateOfBirth;
-        $this->status = 'new'; //TODO: remove hardcode
+        $this->status = Status::NEW;
     }
 
     public function getUuid(): string

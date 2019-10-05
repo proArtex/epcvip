@@ -32,7 +32,7 @@ class ProductApiController extends AbstractController
         $data = json_decode($request->getContent());
 
         $productDTO = new CreateProductDTO();
-        $productDTO->name = $data->name;
+        $productDTO->name = $data->name ?? null;
 
         if ($errors = $validator->validate($productDTO)) {
             return new JsonResponse(['errors' => $errors], Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -99,8 +99,8 @@ class ProductApiController extends AbstractController
         $data = json_decode($request->getContent());
 
         $productDTO = new UpdateProductDTO();
-        $productDTO->name = $data->name;
-        $productDTO->status = $data->status;
+        $productDTO->name = $data->name ?? null;
+        $productDTO->status = $data->status ?? null;
 
         if ($errors = $validator->validate($productDTO)) {
             return new JsonResponse(['errors' => $errors], Response::HTTP_UNPROCESSABLE_ENTITY);
