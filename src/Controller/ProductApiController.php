@@ -161,7 +161,7 @@ class ProductApiController extends AbstractController
         $products = $this
             ->getDoctrine()
             ->getRepository(Product::class)
-            ->findAll();
+            ->findBy(['customer' => $customer]);
 
         return new JsonResponse(
             array_map([$this, 'getView'], $products),
