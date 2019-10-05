@@ -69,7 +69,7 @@ class Customer
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="customer")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="customer", cascade={"persist", "remove"})
      */
     private $products;
 
