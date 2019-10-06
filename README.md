@@ -1,4 +1,4 @@
-#EPCVIP test
+# EPCVIP test
 
 ## Setup
 ```
@@ -35,7 +35,7 @@ Visit http://127.0.0.1:8000/customer
 * Auth is made like this just to save time
 * ISSN generation algorithm is wrong just to save time
 * API exceptions are handled a bit different in `prod` environment
-* The code consists few TODOs just to save time
+* The code contains few TODOs just to save time
 ### approach
 I strongly believe that entities should not have invalid state.
 Validation should not be made after entity becomes invalid.
